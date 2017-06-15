@@ -1,4 +1,4 @@
-$project = Protacon.NetCore.WebApi.ApiKeyAuth
+$project = "Protacon.NetCore.WebApi.ApiKeyAuth"
 
 if(Test-Path $PSScriptRoot\$project\artifacts) {
     Remove-Item $PSScriptRoot\$project\artifacts -Force -Recurse
