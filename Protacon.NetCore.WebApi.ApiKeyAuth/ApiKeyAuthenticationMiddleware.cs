@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace Protacon.NetCore.WebApi.ApiKeyAuth
 {
-    internal class ApiKeyAuthenticationMiddleware : AuthenticationMiddleware<ApiKeyAuthenticationOptions>
+    public class ApiKeyAuthenticationMiddleware : AuthenticationMiddleware<ApiKeyAuthenticationOptions>
     {
         public ApiKeyAuthenticationMiddleware(RequestDelegate next, IOptions<ApiKeyAuthenticationOptions> options, ILoggerFactory loggerFactory, UrlEncoder encoder)
             : base(next, options, loggerFactory, encoder)
