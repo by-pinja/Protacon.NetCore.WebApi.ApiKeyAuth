@@ -7,8 +7,6 @@ if(Test-Path $PSScriptRoot\$project\artifacts) {
 dotnet restore
 dotnet build
 
-dotnet test $PSScriptRoot\$project.Tests\$project.Tests.csproj
-
 $version = if($env:APPVEYOR_REPO_TAG) {
     "$env:APPVEYOR_REPO_TAG_NAME"
 } else {
