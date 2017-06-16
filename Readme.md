@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/cv4tmosjkxe7dpom/branch/master?svg=true)](https://ci.appveyor.com/project/savpek/protacon-netcore-webapi-testutil/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/3upb01m4msrjt65e?svg=true)](https://ci.appveyor.com/project/savpek/protacon-netcore-webapi-apikeyauth)
 
 [![Nuget](https://img.shields.io/nuget/dt/Protacon.NetCore.WebApi.ApiKeyAuth.svg)](https://www.nuget.org/packages/Protacon.NetCore.WebApi.ApiKeyAuth/)
 
