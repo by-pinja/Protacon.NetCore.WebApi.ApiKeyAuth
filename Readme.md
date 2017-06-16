@@ -14,6 +14,16 @@
     services.Configure<ApiKeyAuthenticationOptions>(Configuration.GetSection("ApiAuthentication"));
 ```
 
+And configuration section
+
+```json
+{
+  "ApiAuthentication": {
+    "Keys": ["somegoodkeyishere"]
+  }
+}
+```
+
 ## Adding middleware to application.
 ```cs
     app.UseMiddleware<ApiKeyAuthenticationMiddleware>();
