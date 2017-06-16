@@ -6,7 +6,7 @@
 
 ## Configuring on startup
 ```cs
-    app.Configure
+    services.Configure<ApiKeyAuthenticationOptions>(x => x.Keys = new List<string>() {});
 ```
 
 ## Configuring with congiruation json.
