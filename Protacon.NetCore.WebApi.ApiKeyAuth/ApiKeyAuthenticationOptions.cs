@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Protacon.NetCore.WebApi.ApiKeyAuth
 {
-    public class ApiKeyAuthenticationOptions: AuthenticationOptions
+    public class ApiKeyAuthenticationOptions: AuthenticationSchemeOptions
     {
-        public ApiKeyAuthenticationOptions()
-        {
-            AuthenticationScheme = "ApiKey";
-        }
-
-        public List<string> Keys { get; set; }
+        public const string DefaultScheme = "ApiKey";
+        public string Scheme => DefaultScheme;
+        public List<string> Keys { get; set; } = new List<string>();
     }
 }
