@@ -6,32 +6,26 @@
 
 ## Configuring on startup
 ```cs
-    services.Configure<ApiKeyAuthenticationOptions>(x => x.Keys = new List<string>() {});
+    services.Configure<ApiKeyAuthenticationOptions>(x => x.Keys = new List<string>() { "yourapiKeyhere" });
 ```
 
-## Configuring with congiruation json.
+## Adding authentication
 ```cs
-    services.Configure<ApiKeyAuthenticationOptions>(Configuration.GetSection("ApiAuthentication"));
-```
+    // Add service
+    services
+        .AddAuthentication()
+        .AddApiKeyAuth(options =>
+        {
+            options.Keys = new List<string>{"test"};
+        });
 
-And configuration section
-
-```json
-{
-  "ApiAuthentication": {
-    "Keys": ["somegoodkeyishere"]
-  }
-}
-```
-
-## Adding middleware to application.
-```cs
-    app.UseMiddleware<ApiKeyAuthenticationMiddleware>();
+    // Configuration (this comes from net core 2.x+, not from this library.)
+    app.UseAuthentication();
 ```
 
 ## Using on authorization
 ```cs
-    [Authorize(ActiveAuthenticationSchemes = "ApiKey")]
+    [Authorize(AuthenticationSchemes = "ApiKey")]
     public class ExampleController : Controller
     {
     }
