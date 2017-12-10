@@ -11,9 +11,12 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
 {
     internal class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthenticationOptions>
     {
+        private ILogger<ApiKeyAuthenticationHandler> _logger;
+
         public ApiKeyAuthenticationHandler(IOptionsMonitor<ApiKeyAuthenticationOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
-            : base(options, logger, encoder, clock)
+            : base(options, logger, encoder, clock: clock)
         {
+            _logger = logger.CreateLogger<ApiKeyAuthenticationHandler>();
         }
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -28,7 +31,10 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
             if (apiKey == null || !apiKey.Any())
                 return Task.FromResult(AuthenticateResult.Fail("Invalid key format, expected 'ApiKey key'"));
 
-            var match = Options.Keys.SingleOrDefault(x => x == apiKey.Replace("ApiKey", "").Trim());
+            var parsedKey = apiKey.Replace("ApiKey", "").Trim();
+            var match = Options.Keys.SingleOrDefault(x => x == parsedKey);
+
+            _logger.LogDebug($"Trying to match apikey '{parsedKey}' against keys '{string.Join(",", Options.Keys)}'");
 
             if (match == null)
                 return Task.FromResult(AuthenticateResult.Fail("Invalid ApiKey"));
