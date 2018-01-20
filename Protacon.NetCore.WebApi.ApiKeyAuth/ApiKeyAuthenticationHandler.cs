@@ -32,9 +32,9 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
                 return Task.FromResult(AuthenticateResult.Fail("Invalid key format, expected 'ApiKey key'"));
 
             var parsedKey = apiKey.Replace("ApiKey", "").Trim();
-            var match = Options.Keys.SingleOrDefault(x => x == parsedKey);
+            var match = Options.ValidApiKeys.SingleOrDefault(x => x == parsedKey);
 
-            _logger.LogDebug($"Trying to match apikey '{parsedKey}' against keys '{string.Join(",", Options.Keys)}'");
+            _logger.LogDebug($"Trying to match apikey '{parsedKey}' against keys '{string.Join(",", Options.ValidApiKeys)}'");
 
             if (match == null)
                 return Task.FromResult(AuthenticateResult.Fail("Invalid ApiKey"));

@@ -6,7 +6,7 @@
 
 ## Configuring on startup
 ```cs
-    services.Configure<ApiKeyAuthenticationOptions>(x => x.Keys = new List<string>() { "yourapiKeyhere" });
+    services.Configure<ApiKeyAuthenticationOptions>(x => x.ValidApiKeys = new List<string>() { "yourapiKeyhere" });
 ```
 
 ## Adding authentication
@@ -16,7 +16,7 @@
         .AddAuthentication()
         .AddApiKeyAuth(options =>
         {
-            options.Keys = new List<string>{"test"};
+            options.ValidApiKeys = new List<string>{"thiIsOneNotSoSecureApiKey"};
         });
 
     // Configuration (this comes from net core 2.x+, not from this library.)

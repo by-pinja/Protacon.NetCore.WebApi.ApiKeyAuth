@@ -7,6 +7,6 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
     {
         public const string DefaultScheme = "ApiKey";
         public string Scheme => DefaultScheme;
-        public IEnumerable<string> Keys { get; set; } = new List<string>();
+        public IEnumerable<string> ValidApiKeys { get; set; } = new List<string>();
     }
 }
