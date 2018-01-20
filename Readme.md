@@ -4,11 +4,6 @@
 
 # Simple configurable middleware for ApiKey authentication
 
-## Configuring on startup
-```cs
-    services.Configure<ApiKeyAuthenticationOptions>(x => x.ValidApiKeys = new List<string>() { "yourapiKeyhere" });
-```
-
 ## Adding authentication
 ```cs
     // Add service
@@ -16,7 +11,7 @@
         .AddAuthentication()
         .AddApiKeyAuth(options =>
         {
-            options.ValidApiKeys = new List<string>{"thiIsOneNotSoSecureApiKey"};
+            options.ValidApiKeys = new List<string>{"apikeyfortesting"};
         });
 
     // Configuration (this comes from net core 2.x+, not from this library.)
@@ -28,6 +23,15 @@
     [Authorize(AuthenticationSchemes = "ApiKey")]
     public class ExampleController : Controller
     {
+    }
+```
+
+```cs
+    public class ExampleController : Controller
+    {
+        [Authorize(AuthenticationSchemes = "ApiKey")]
+        [HttpPost("...")]
+        public IActionResult Method() {}
     }
 ```
 
