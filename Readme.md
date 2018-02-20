@@ -11,7 +11,15 @@
         .AddAuthentication()
         .AddApiKeyAuth(options =>
         {
-            options.ValidApiKeys = new List<string>{"apikeyfortesting"};
+            if(!Configuration.GetChildren().Any(x => x.Key == "ApiAuthentication"))
+                throw new InvalidOperationException($"Expected 'ApiAuthentication' section.");
+
+            var keys = Configuration.GetSection("ApiAuthentication:Keys")
+                .AsEnumerable()
+                .Where(x => x.Value != null)
+                .Select(x => x.Value);
+
+            options.ValidApiKeys = keys;
         });
 
     // Configuration (this comes from net core 2.x+, not from this library.)
