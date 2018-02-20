@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -18,6 +19,11 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
 
             if (apikeyRequired)
             {
+                if (operation.Parameters == null)
+                {
+                    operation.Parameters = new List<IParameter>();
+                }
+
                 operation.Parameters.Add(new NonBodyParameter
                 {
                     Name = "Authorization",
