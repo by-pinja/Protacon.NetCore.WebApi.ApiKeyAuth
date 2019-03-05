@@ -5,6 +5,7 @@
 # Simple configurable middleware for ApiKey authentication
 
 ## Adding authentication
+
 ```cs
     // Add service
     services
@@ -27,6 +28,7 @@
 ```
 
 ## Using on authorization
+
 ```cs
     [Authorize(AuthenticationSchemes = "ApiKey")]
     public class ExampleController : Controller
@@ -44,7 +46,9 @@
 ```
 
 # Support for swagger documentation
+
 Package adds support for webapi fields on swagger documentation.
+
 ```cs
     services.AddSwaggerGen(c =>
     {

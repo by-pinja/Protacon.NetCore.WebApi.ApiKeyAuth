@@ -11,7 +11,7 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
 {
     internal class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthenticationOptions>
     {
-        private ILogger<ApiKeyAuthenticationHandler> _logger;
+        private readonly ILogger<ApiKeyAuthenticationHandler> _logger;
 
         public ApiKeyAuthenticationHandler(IOptionsMonitor<ApiKeyAuthenticationOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
             : base(options, logger, encoder, clock: clock)
