@@ -8,7 +8,6 @@ nuget:
   disable_publish_on_pr: true
 build_script:
 - ps: .\Build.ps1
-test: off
 artifacts:
 - path: .\Protacon.NetCore.WebApi.ApiKeyAuth\artifacts\**\*.nupkg
   name: NuGet
@@ -16,7 +15,7 @@ deploy:
 - provider: NuGet
   name: production
   api_key:
-    secure: AcGQeBVVsXFTv0cJ4Jo0q6dKMcAmqXX2V5eDBk1tittf3oh/iaH3VqMTEd+3F+Qw
+    secure: ZQ7SW5khBueQZBzRxUkZ9uRSrCQWEYyjY5119+8GO9YX5Sy4/7wVv4sSoTCfo7q6
   on:
     branch: master
     appveyor_repo_tag: true
