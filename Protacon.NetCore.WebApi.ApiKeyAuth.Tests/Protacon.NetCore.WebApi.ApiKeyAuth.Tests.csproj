@@ -6,11 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Protacon.NetCore.WebApi.TestUtil" Version="2.2.1" />
     <ProjectReference Include="../Protacon.NetCore.WebApi.ApiKeyAuth/Protacon.NetCore.WebApi.ApiKeyAuth.csproj" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
     <PackageReference Include="microsoft.testplatform.testhost" Version="16.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-beta" />
   </ItemGroup>
 </Project>

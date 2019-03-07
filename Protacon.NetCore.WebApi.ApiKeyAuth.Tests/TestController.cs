@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Protacon.NetCore.WebApi.ApiKeyAuth.Tests
 {
-    [Authorize(AuthenticationSchemes = "ApiKey")]
+    [Authorize(AuthenticationSchemes = ApiKey.Scheme)]
     public class TestController: Controller
     {
         [HttpGet("/v1/emptyget/")]

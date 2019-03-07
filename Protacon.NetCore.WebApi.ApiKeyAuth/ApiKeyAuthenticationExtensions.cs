@@ -12,6 +12,11 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
             return builder.AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(ApiKeyAuthenticationOptions.DefaultScheme, configureOptions);
         }
 
+        public static AuthenticationBuilder AddApiKeyAuth(this AuthenticationBuilder builder, params string[] validApiKeys)
+        {
+            return builder.AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(ApiKeyAuthenticationOptions.DefaultScheme, options => options.ValidApiKeys = validApiKeys);
+        }
+
         public static AuthenticationBuilder AddDisabledApiKeyAuth(this AuthenticationBuilder builder)
         {
             return builder.AddScheme<ApiKeyAuthenticationOptions, DisabledApiKeyAuthenticationHandler>(ApiKeyAuthenticationOptions.DefaultScheme, _ => {});
