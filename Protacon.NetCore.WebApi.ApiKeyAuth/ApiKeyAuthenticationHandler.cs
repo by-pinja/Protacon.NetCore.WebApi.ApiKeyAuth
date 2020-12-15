@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
@@ -31,7 +32,7 @@ namespace Protacon.NetCore.WebApi.ApiKeyAuth
             if (apiKey == null || !apiKey.Any())
                 return Task.FromResult(AuthenticateResult.Fail("Invalid key format, expected 'ApiKey key'"));
 
-            var parsedKey = apiKey.Replace("ApiKey", "").Trim();
+            var parsedKey = Regex.Replace(apiKey, "^ApiKey", "").Trim();
             var match = Options.ValidApiKeys.SingleOrDefault(x => x == parsedKey);
 
             _logger.LogDebug($"Trying to match apikey '{parsedKey}' against keys '{string.Join(",", Options.ValidApiKeys)}'");
